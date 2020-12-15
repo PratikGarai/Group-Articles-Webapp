@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
 def home(request):
-    return render(request, "Index.html", {"title" : "pReddit Homepage!" })
+    return render(request, "Index.html", {})
