@@ -14,9 +14,21 @@
 	</head>
 	<body>
 		<nav role="navigation" class="navbar mynav" id="navbar">
-			<div class="container">
+			<div class="main-container">
 				<a class="navbar-brand mynav-item mynav-brand" href="{% url 'home' %}">pReddit!</a>
-				<a class="navbar mynav-item" href="{% url 'home' %}">pReddit!</a>
+
+				<ul class="nav navbar-nav navbar-right">
+					{% if user.is_authenticated %}
+						<li><a class="navbar mynav-item" href="#">Post</a></li>
+						<li><a class="navbar mynav-item" href="#">Groups</a></li>
+						<li><a class="navbar mynav-item" href="#">Create Group</a></li>
+						<li><a class="navbar mynav-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+					{% else %}
+						<li><a class="navbar mynav-item" href="#">Groups</a></li>
+						<li><a class="navbar mynav-item" href="{% url 'accounts:login' %}">Log In</a></li>
+						<li><a class="navbar mynav-item" href="{% url 'accounts:signup' %}">Sign Up</a></li>
+					{% endif %}
+				</ul>
 			</div>
 		</nav>
 		<div class="main-container">
