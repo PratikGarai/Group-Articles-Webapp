@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 	<head>
 		<title> pReddit! </title>
@@ -12,7 +13,15 @@
 			<link rel="stylesheet" href='{% static 'css/main.css' %}'>
 	</head>
 	<body>
-		{% block bodyblock %}
-		{% endblock %}
+		<nav role="navigation" class="navbar mynav" id="navbar">
+			<div class="container">
+				<a class="navbar-brand mynav-item mynav-brand" href="{% url 'home' %}">pReddit!</a>
+				<a class="navbar mynav-item" href="{% url 'home' %}">pReddit!</a>
+			</div>
+		</nav>
+		<div class="main-container">
+			{% block bodyblock %}
+			{% endblock %}
+		</div>
 	</body>
 </html>
