@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 from django import template
-from django.shortcuts import reverse
+from django.urls import reverse
 
 import misaka
 
