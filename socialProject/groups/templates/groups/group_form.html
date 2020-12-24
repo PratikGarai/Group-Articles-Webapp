@@ -1,4 +1,4 @@
-{% extends "group/group_base.html" %}
+{% extends "groups/group_base.html" %}
 {% load bootstrap3 %}
 
 
@@ -10,7 +10,7 @@
     <form action="{% url 'groups:create' %}" method="post" id="groupForm">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" class="btn btn-success btn-large"></input>
+        <input type="submit" class="btn btn-success btn-large" value="Create!"></input>
     </form>
 {% endblock %}
 
