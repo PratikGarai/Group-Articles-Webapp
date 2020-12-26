@@ -5,18 +5,20 @@
     <h2>Member Count : {{group.members.count}}</h2>
 
     <div class="content">
+    {% comment %}
         {% if user in group.members.all %}
             <a class="btn btn-danger btn-lg btn-fill" href="{% url 'groups:leave' slug=group.slug %}">Leave</a>
         {% else %}
             <a class="btn btn-success btn-lg btn-fill" href="{% url 'groups:join' slug=group.slug %}">Join</a>
         {% endif %}
+    {% endcomment %}
     </div>
 {% endblock %}
 
 {% block group_content %}
 
 <div class="col-md-10">
-    {% if group.posts.count ==0 %}
+    {% if group.posts.count == 0 %}
         <h2>No posts in this group yet!</h2>
     {% else %}
         {% for post in group.posts.all %}

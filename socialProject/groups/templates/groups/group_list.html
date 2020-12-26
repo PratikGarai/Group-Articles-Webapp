@@ -24,7 +24,7 @@
     <div class="col-md-10">
         <div class="list-group">
             {% for group in object_list %}
-                <a href="{% url 'group:single' slug=group.slug %}" class="list-group-item">
+                <a href="{% url 'groups:single' slug=group.slug %}" class="list-group-item">
                     <h3 class="title list-group-item-heading">{{group.name}}</h3>
                     <div class="listgroup-item-text">
                         {{group.description_html|safe}}

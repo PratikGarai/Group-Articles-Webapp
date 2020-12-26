@@ -12,4 +12,5 @@ urlpatterns = [
     path('test/', views.testpage, name="test"),
     path('thanks/', views.thankspage, name="thanks"),
     path('groups/', include('groups.urls', namespace="groups")),
+    path('posts/', include('posts.urls', namespace="posts")),
 ]
