@@ -1,8 +1,8 @@
-<div class="post media">
-    <h3>{{post.message_html|safe}}</h3>
+<div class="post media list-group-item">
+    <h3>{{post.title}}</h3>
     <div class="media-body">
-        <strong>{{post.user.username}}</strong>
         <h5 class="media-heading">
+            Written by :
             <span class="username">
                 <a href="{% url 'posts:for_user' username=post.user.username  %}">@{{post.user.username}}</a>
             </span>

@@ -43,7 +43,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
     model = models.Post
-    fields = ('message', 'group')
+    fields = ('title','message','group')
     success_url = reverse_lazy("posts:all")
 
     def form_valid(self, form):
@@ -60,9 +60,5 @@ class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     def get_queryset(self):
         queryset =  super().get_queryset()
         return queryset.filter(user_id = self.request.user.id)
-    
-    def delete(self, *args, **kwargs):
-        self.messages.success = (self.request,"Post Deleted")
-        return super().delete(*args, **kwargs)
       
     
