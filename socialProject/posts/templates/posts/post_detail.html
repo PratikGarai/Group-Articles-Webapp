@@ -1,0 +1,40 @@
+{% extends "posts/post_base.html" %}
+
+{% block prepost %}
+{% endblock %}
+
+
+{% block post_content %}
+    <div class="col-md-10">
+        <h3>{{post.title}}</h3>
+        <div class="media-body">
+            <h4 class="media-heading">
+                Author :
+                <span class="username">
+                    <a href="{% url 'posts:for_user' username=post.user.username  %}">@{{post.user.username}}</a>
+                </span>
+            </h4>
+        </div>
+
+        <hr>
+        <div class="media-body">
+            <p>
+                {{post.message_html|safe}}
+            </p>
+        </div>
+        <hr>
+
+        <div class="media-footer">
+            {% if user.is_authenticated and post.user == user %}
+                <a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-danger">
+                    <span class='glyphicon glyphicon-remove'></span>
+                    <span class="icon-label">Delete</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block postpost %}
+{% endblock %}

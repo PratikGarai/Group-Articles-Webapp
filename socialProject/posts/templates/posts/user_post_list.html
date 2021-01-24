@@ -1,0 +1,45 @@
+{% extends "posts/post_base.html" %}
+
+{% block prepost %}
+    <div class="col-md-4">
+        <div class="media-body">
+            <h2 class="media-heading">
+                <span class="username">
+                    <a href="{% url 'posts:for_user' username=post_user.username  %}">@{{post_user.username}}</a>'s Posts
+                </span>
+            </h3>
+        </div>
+    </div>
+
+{% endblock %}
+
+<br>
+
+{% block post_content %}
+
+    <div class="col-md-10">
+        <div class="list-group">
+            {% for post in object_list %}
+                <div class="post media list-group-item">
+                    <h3>{{post.title}}</h3>
+                    <div class="media-footer">   
+                        <div class="row">
+                            <div class="col-md-8">
+                                Group : <a href="{% url 'groups:single' slug=post.group.slug %}">@{{post.group}}</a>
+                            </div>
+                            {% if user.is_authenticated and post_user == user %}
+                                <div class="col-md-4">
+                                    <a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-danger">
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                        <span class="icon-label">Delete</span>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

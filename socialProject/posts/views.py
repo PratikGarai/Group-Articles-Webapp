@@ -15,10 +15,11 @@ User = get_user_model()
 class PostList(SelectRelatedMixin, generic.ListView):
     model = models.Post
     select_related = ('user', 'group')
+    template_name = "posts/post_list.html"
 
 class UserPost(generic.ListView):
     model = models.Post
-    template_name = "posts/post_list.html"
+    template_name = "posts/user_post_list.html"
 
     def get_queryset(self):
         try:
@@ -26,7 +27,7 @@ class UserPost(generic.ListView):
         except User.DoesNotExist :
             raise Http404
         else:
-            self.post_user.posts.all()
+            return self.post_user.posts.all()
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
